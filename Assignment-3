@@ -1,0 +1,35 @@
+import numpy as np
+
+# Input number of people
+n = int(input("Enter the number of people: "))
+
+# Create arrays for height (in cm) and weight (in kg)
+heights_cm = np.zeros(n)
+weights = np.zeros(n)
+
+# Input data
+for i in range(n):
+    print(f"\nPerson {i+1}")
+    heights_cm[i] = float(input("  Height (in cm): "))
+    weights[i] = float(input("  Weight (in kg): "))
+
+# Convert height from cm to meters
+heights_m = heights_cm / 100
+
+# Calculate BMI = weight / (height^2)
+bmi = weights / (heights_m ** 2)
+
+# Display Results
+print("\n📊 BMI Report:")
+for i in range(n):
+    category = ""
+    if bmi[i] < 18.5:
+        category = "Underweight"
+    elif 18.5 <= bmi[i] < 25:
+        category = "Normal weight"
+    elif 25 <= bmi[i] < 30:
+        category = "Overweight"
+    else:
+        category = "Obese"
+
+    print(f"Person {i+1}: BMI = {bmi[i]:.2f} → {category}")
